@@ -5,7 +5,7 @@ Divisão sugerida para um grupo de 5 pessoas, baseada na descrição do projeto 
 ---
 
 ## 1. Unidade de Controle (FSM)
-
+### Quem vai fazer: Tiago.
 - Projetar a máquina de estados do multiciclo (fetch, decode, execute, memory, write-back)
 - Definir a tabela de estados × sinais de controle (RegWrite, MemRead, MemWrite, ALUOp, PCSrc, etc.)
 - Implementar em VHDL (`controller.vhd`)

@@ -74,7 +74,7 @@ Contrato fechado com a Parte 2 (datapath):
 | `ALUSrcA` | 1 | Operando A da ALU: `0` = PC, `1` = registrador A (latched). |
 | `ALUSrcB(1:0)` | 2 | Operando B da ALU: `00` = registrador B, `01` = constante 1 (incremento de PC), `10` = imediato estendido. |
 | `ALUOp(2:0)` | 3 | Código final da ALU — ver tabela de codificação abaixo. |
-| `PCSource(1:0)` | 2 | Próximo valor do PC: `00` = ALUOut sequencial (PC+1), `01` = ALUOut de branch, `10` = endereço de jump (12 bits). |
+| `PCSource(1:0)` | 2 | Próximo valor do PC: `00` = saída direta da ULA (PC+1, calculado no próprio FETCH), `01` = ALUOut (alvo de branch, calculado no DECODE), `10` = endereço de jump (12 bits). |
 | `led_state` | 5 | Codificação one-hot do estágio macro atual — ver seção "LEDs verdes". |
 
 `RegDst` não existe nesta FSM: neste ISA o registrador destino é sempre `Ri`. O mux da porta B do banco de registradores (Rk no tipo R, Ri no branch/ST, etc.) é resolvido pelo decodificador direto a partir do opcode — **não** é um sinal gerado pelo controlador.
@@ -132,4 +132,4 @@ A quantidade de LEDs verdes realmente disponíveis na placa alvo depende do pin 
 - **Acoplamento:** `controller_fsm.vhd` nunca instancia ALU, banco de registradores ou memória — só portas de entrada/saída. A fiação real fica em `src/top/cpu_top.vhd`.
 - **Reset:** assíncrono (decisão de projeto — o reset vem de um botão/switch físico, não sincronizado ao clock manual). O testbench isolado (`sim/testbenches/tb_controller_fsm.vhd`) deve cobrir reset no meio de uma instrução.
 - **Opcodes:** sempre via `use work.cpu_pkg.all` — nunca redefinidos localmente em `src/control/`.
-- **⚠️ Pendência conjunta com a Parte 3 (memória):** a RAM do Quartus (`altsyncram`) tem leitura síncrona. A Parte 2 recomendou ligar a RAM no clock invertido, para que a FSM não precise de estados extras de espera (mantém a FSM igual à do livro). Se a equipe decidir **não** inverter o clock da memória, esta FSM precisa de estados adicionais de espera em `FETCH` e `MEM_READ` — avaliar com a Parte 3 antes de fechar o `src/memory/`.
+- **Leitura síncrona da memória (decidido):** a RAM do Quartus (`altsyncram`) tem leitura síncrona. Por isso ela é ligada no **clock invertido** (ver [`decisoes.md`](decisoes.md)), e esta FSM não precisa de estados de espera em `FETCH` e `MEM_READ`. Se essa decisão mudar, a FSM precisa ganhar esses estados.

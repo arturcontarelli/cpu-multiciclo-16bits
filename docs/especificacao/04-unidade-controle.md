@@ -133,3 +133,9 @@ A quantidade de LEDs verdes realmente disponíveis na placa alvo depende do pin 
 - **Reset:** assíncrono (decisão de projeto — o reset vem de um botão/switch físico, não sincronizado ao clock manual). O testbench isolado (`sim/testbenches/tb_controller_fsm.vhd`) deve cobrir reset no meio de uma instrução.
 - **Opcodes:** sempre via `use work.cpu_pkg.all` — nunca redefinidos localmente em `src/control/`.
 - **Leitura síncrona da memória (decidido):** a RAM do Quartus (`altsyncram`) tem leitura síncrona. Por isso ela é ligada no **clock invertido** (ver [`decisoes.md`](decisoes.md)), e esta FSM não precisa de estados de espera em `FETCH` e `MEM_READ`. Se essa decisão mudar, a FSM precisa ganhar esses estados.
+
+## Status de implementação
+
+- `src/control/controller_fsm.vhd` — implementado, batendo 1:1 com as tabelas de estado/sinais acima (10 estados, saídas puramente Moore, `ALUOp` no código final de 3 bits da ALU, `BNE` derivado do opcode).
+- `sim/testbenches/tb_controller_fsm.vhd` — testbench isolado implementado, cobrindo os 11 opcodes (um teste por tipo de instrução), a distinção `BNE`/`PCWriteCond` em `BRANCH`, e reset assíncrono no meio de uma instrução (`ADDR_CALC`). Nenhuma ALU/banco de registradores/memória real é instanciada no teste.
+- Evidência de execução do testbench (log do simulador) e os resultados consolidados dos testes de integração ficam em `docs/especificacao/06-testes.md` (Parte 5) — este documento cobre só o desenho da unidade de controle, não os resultados de simulação.

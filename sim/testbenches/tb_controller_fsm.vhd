@@ -12,7 +12,7 @@ architecture sim of tb_controller_fsm is
     signal clk    : std_logic := '0';
     signal reset  : std_logic := '0';
     signal opcode : opcode_t := OP_ADD;
-    signal finished : std_logic := false;
+    signal finished : boolean := false;
 
     signal PCWrite, PCWriteCond, BNE, IorD, IRWrite : std_logic;
     signal MemRead, MemWrite, MemToReg, RegWrite    : std_logic;
@@ -44,125 +44,143 @@ begin
     end process;
 
     stim: process
+        variable falhas : integer := 0;
+
+        -- espera a borda de subida e mais 1 ns, para conferir as saidas
+        -- depois que o registrador de estado ja atualizou
+        procedure tick is
+        begin
+            wait until rising_edge(clk);
+            wait for 1 ns;
+        end procedure;
+
+        procedure verifica(cond : boolean; msg : string) is
+        begin
+            if not cond then
+                report "FALHA " & msg severity error;
+                falhas := falhas + 1;
+            end if;
+        end procedure;
     begin
         -- reset inicial
         reset <= '1'; wait for CLK_PERIOD;
-        reset <= '0'; assert led_state = "00001" report "reset: devia iniciar em FETCH" severity error;
+        reset <= '0'; verifica(led_state = "00001", "reset: devia iniciar em FETCH");
 
         --  ------------
         --  |ADD (Tipo R)|
         --  -------------
 
         opcode <= OP_ADD;
-        wait until rising_edge(clk); -- Fetch -> decode
-        assert led_state = "00010" report "ADD: devia estar em DECODE" severity error;
-        wait until rising_edge(clk); -- Decode -> Exec_r
-        assert led_state = "00100" and ALUOp = "010" report "ADD: ALUOp devia ser 010 em execute" severity error;
-        wait until rising_edge(clk); -- Exec_r -> WB_alu
-        assert led_state = "10000" and RegWrite = '1' and MemToReg = '0' report "ADD: sinais errados em Write back" severity error;
-        wait until rising_edge(clk);  -- WB_ALU -> Fetch
-        assert led_state = "00001" report "ADD: devia voltar para FETCH" severity
+        tick; -- Fetch -> decode
+        verifica(led_state = "00010", "ADD: devia estar em DECODE");
+        tick; -- Decode -> Exec_r
+        verifica(led_state = "00100" and ALUOp = "010", "ADD: ALUOp devia ser 010 em execute");
+        tick; -- Exec_r -> WB_alu
+        verifica(led_state = "10000" and RegWrite = '1' and MemToReg = '0', "ADD: sinais errados em Write back");
+        tick;  -- WB_ALU -> Fetch
+        verifica(led_state = "00001", "ADD: devia voltar para FETCH");
 
         -- ----------------
         -- |SUB/AND/OR/SLT| -- só confere o ALUOp em EXEC_R
         -- ---------------
 
         opcode <= OP_SUB;
-        wait until rising_edge(clk); wait until rising_edge(clk);
-        assert ALUOp = "100" report "SUB: ALUOp devia ser 100" severity error;
-        wait until rising_edge(clk); wait until rising_edge(clk);
+        tick; tick;
+        verifica(ALUOp = "100", "SUB: ALUOp devia ser 100");
+        tick; tick;
 
         opcode <= OP_AND;
-        wait until rising_edge(clk); wait until rising_edge(clk);
-        assert ALUOp = "000" report "AND: ALUOp devia ser 000" severity error;
-        wait until rising_edge(clk); wait until rising_edge(clk);
+        tick; tick;
+        verifica(ALUOp = "000", "AND: ALUOp devia ser 000");
+        tick; tick;
 
         opcode <= OP_OR;
-        wait until rising_edge(clk); wait until rising_edge(clk);
-        assert ALUOp = "001" report "OR: ALUOp devia ser 001" severity error;
-        wait until rising_edge(clk); wait until rising_edge(clk);
+        tick; tick;
+        verifica(ALUOp = "001", "OR: ALUOp devia ser 001");
+        tick; tick;
 
         opcode <= OP_SLT;
-        wait until rising_edge(clk); wait until rising_edge(clk);
-        assert ALUOp = "110" report "SLT: ALUOp devia ser 110" severity error;
-        wait until rising_edge(clk); wait until rising_edge(clk);
+        tick; tick;
+        verifica(ALUOp = "110", "SLT: ALUOp devia ser 110");
+        tick; tick;
 
         -- -----
         -- |ADDI|
         -- -----   
         opcode <= OP_ADDI;
-        wait until rising_edge(clk); -- DECODE
-        wait until rising_edge(clk); -- ADDR_CALC
-        assert led_state = "00100" and ALUSrcA = '1' and ALUSrcB = "10" and ALUOp = "010"
-            report "ADDI: sinais errados em ADDR_CALC" severity error;
-        wait until rising_edge(clk); -- WB_ALU
-        assert RegWrite = '1' and MemToReg = '0' report "ADDI: esperava escrever ALUOut" severity error;
-        wait until rising_edge(clk); -- FETCH
+        tick; -- DECODE
+        tick; -- ADDR_CALC
+        verifica(led_state = "00100" and ALUSrcA = '1' and ALUSrcB = "10" and ALUOp = "010", "ADDI: sinais errados em ADDR_CALC");
+        tick; -- WB_ALU
+        verifica(RegWrite = '1' and MemToReg = '0', "ADDI: esperava escrever ALUOut");
+        tick; -- FETCH
 
          ---------------------------------------------------------------
         -- LD
         ---------------------------------------------------------------
         opcode <= OP_LD;
-        wait until rising_edge(clk); -- DECODE
-        wait until rising_edge(clk); -- ADDR_CALC
-        wait until rising_edge(clk); -- MEM_READ
-        assert led_state = "01000" and IorD = '1' and MemRead = '1' report "LD: sinais errados em MEM_READ" severity error;
-        wait until rising_edge(clk); -- WB_MEM
-        assert RegWrite = '1' and MemToReg = '1' report "LD: esperava escrever RDM" severity error;
-        wait until rising_edge(clk); -- FETCH
+        tick; -- DECODE
+        tick; -- ADDR_CALC
+        tick; -- MEM_READ
+        verifica(led_state = "01000" and IorD = '1' and MemRead = '1', "LD: sinais errados em MEM_READ");
+        tick; -- WB_MEM
+        verifica(RegWrite = '1' and MemToReg = '1', "LD: esperava escrever RDM");
+        tick; -- FETCH
 
         ---------------------------------------------------------------
         -- ST
         ---------------------------------------------------------------
         opcode <= OP_ST;
-        wait until rising_edge(clk); -- DECODE
-        wait until rising_edge(clk); -- ADDR_CALC
-        wait until rising_edge(clk); -- MEM_WRITE
-        assert led_state = "01000" and IorD = '1' and MemWrite = '1' report "ST: sinais errados em MEM_WRITE" severity error;
-        wait until rising_edge(clk); -- FETCH
+        tick; -- DECODE
+        tick; -- ADDR_CALC
+        tick; -- MEM_WRITE
+        verifica(led_state = "01000" and IorD = '1' and MemWrite = '1', "ST: sinais errados em MEM_WRITE");
+        tick; -- FETCH
 
         ---------------------------------------------------------------
         -- BEQ
         ---------------------------------------------------------------
         opcode <= OP_BEQ;
-        wait until rising_edge(clk); -- DECODE
-        wait until rising_edge(clk); -- BRANCH
-        assert led_state = "00100" and PCWriteCond = '1' and BNE = '0' and ALUOp = "100" and PCSource = "01"
-            report "BEQ: sinais errados em BRANCH" severity error;
-        wait until rising_edge(clk); -- FETCH
+        tick; -- DECODE
+        tick; -- BRANCH
+        verifica(led_state = "00100" and PCWriteCond = '1' and BNE = '0' and ALUOp = "100" and PCSource = "01", "BEQ: sinais errados em BRANCH");
+        tick; -- FETCH
 
         ---------------------------------------------------------------
         -- BNE
         ---------------------------------------------------------------
         opcode <= OP_BNE;
-        wait until rising_edge(clk); -- DECODE
-        wait until rising_edge(clk); -- BRANCH
-        assert led_state = "00100" and PCWriteCond = '1' and BNE = '1'
-            report "BNE: BNE devia ser 1" severity error;
-        wait until rising_edge(clk); -- FETCH
+        tick; -- DECODE
+        tick; -- BRANCH
+        verifica(led_state = "00100" and PCWriteCond = '1' and BNE = '1', "BNE: BNE devia ser 1");
+        tick; -- FETCH
 
         ---------------------------------------------------------------
         -- JMP
         ---------------------------------------------------------------
         opcode <= OP_JMP;
-        wait until rising_edge(clk); -- DECODE
-        wait until rising_edge(clk); -- JUMP
-        assert led_state = "00100" and PCWrite = '1' and PCSource = "10" report "JMP: sinais errados em JUMP" severity error;
-        wait until rising_edge(clk); -- FETCH
+        tick; -- DECODE
+        tick; -- JUMP
+        verifica(led_state = "00100" and PCWrite = '1' and PCSource = "10", "JMP: sinais errados em JUMP");
+        tick; -- FETCH
 
         ---------------------------------------------------------------
         -- reset no meio de uma instrucao (assincrono)
         ---------------------------------------------------------------
         opcode <= OP_LD;
-        wait until rising_edge(clk); -- DECODE
-        wait until rising_edge(clk); -- ADDR_CALC
+        tick; -- DECODE
+        tick; -- ADDR_CALC
         reset <= '1';
         wait for CLK_PERIOD / 4;
-        assert led_state = "00001" report "reset: devia voltar a FETCH imediatamente, sem esperar borda" severity error;
+        verifica(led_state = "00001", "reset: devia voltar a FETCH imediatamente, sem esperar borda");
         reset <= '0';
         wait for CLK_PERIOD;
 
-        report "tb_controller_fsm: todos os testes passaram" severity note;
+        if falhas = 0 then
+            report "tb_controller_fsm: OK" severity note;
+        else
+            report "tb_controller_fsm: " & integer'image(falhas) & " falha(s)" severity failure;
+        end if;
         finished <= true;
         wait;
     end process;

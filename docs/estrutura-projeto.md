@@ -11,8 +11,8 @@ cpu-multiciclo-16bits/
 ├── src/                    # código-fonte VHDL
 │   ├── common/             # pacote compartilhado: tipos, constantes, opcodes
 │   ├── datapath/           # ALU, banco de registradores, PC, extensão de sinal, muxes
-│   ├── control/            # unidade de controle (FSM) e decodificador de instrução
-│   ├── memory/             # memória de instrução e de dados
+│   ├── control/            # unidade de controle (FSM)
+│   ├── memory/             # memória única (instruções e dados) e decodificador de instrução
 │   ├── io/                 # periféricos da FPGA: debouncer, displays HEX
 │   └── top/                # entidade de topo que integra todos os módulos
 ├── sim/

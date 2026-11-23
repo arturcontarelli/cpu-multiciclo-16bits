@@ -1,6 +1,6 @@
 # src/memory
 
-- `instruction_memory.vhd` — ROM/RAM inicializada via `.mif`, somente leitura durante a execução.
-- `data_memory.vhd` — memória de dados, leitura e escrita (`MemRead`/`MemWrite` vindos do controlador).
+- `memory.vhd` — memória **única** de instruções e dados (4096 × 16), uma `altsyncram` inicializada por um `.mif` (generic `MIF_FILE`). Fica no clock invertido para que a leitura síncrona da RAM não exija estados de espera na FSM. O endereço (PC ou ALUOut) é escolhido pelo mux `IorD` dentro do datapath; aqui só chega o endereço pronto. Justificativa em `docs/especificacao/01-descricao-topologia.md`.
+- `instruction_decoder.vhd` — puramente combinacional: separa os campos do IR (opcode, Ri, Rj, Rk, imediato, endereço do JMP) e gera o `RegSrcB` (1 em ST, BEQ e BNE). Formatos em `docs/especificacao/03-formato-instrucoes.md`.
 
-Se o projeto usar memória única compartilhada entre instrução e dados (decisão de equipe), documentar aqui a justificativa e ajustar esta pasta para refletir isso — mantendo o restante dos módulos alheios a essa decisão (eles só veem as portas de endereço/dado).
+Nenhum módulo daqui conhece a FSM ou o datapath; a ligação é feita em `src/top/cpu_top.vhd`.

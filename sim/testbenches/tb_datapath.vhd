@@ -2,7 +2,7 @@
 -- O decodificador e a memoria sao modelos simples, so para este teste:
 --   * decodificador: fatia os campos do IR e gera RegSrcB (ST, BEQ, BNE)
 --   * memoria: unica, 64 palavras, endereco registrado na borda de DESCIDA
---     (imita a altsyncram ligada no clock invertido, ver decisoes.md)
+--     (imita a altsyncram ligada no clock invertido, ver 01-descricao-topologia.md)
 --
 -- O programa usa as 11 instrucoes, desvios tomados e nao tomados, laco com
 -- offset negativo, JMP por cima de instrucao "veneno", escrita em R0 e

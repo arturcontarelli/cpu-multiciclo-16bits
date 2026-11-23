@@ -4,7 +4,7 @@ Responsável: Artur (`src/datapath/`).
 
 ## Visão geral
 
-O caminho de dados segue a topologia multiciclo do Patterson & Hennessy (2ª ed., cap. 5), adaptada ao nosso formato de instrução e à FPGA (ver [`decisoes.md`](decisoes.md)). Cada instrução é executada em 3 a 5 ciclos. Os resultados intermediários ficam em registradores entre um ciclo e o próximo, e por isso a mesma ULA e a mesma memória são reaproveitadas em ciclos diferentes:
+O caminho de dados segue a topologia multiciclo do Patterson & Hennessy (2ª ed., cap. 5), adaptada ao nosso formato de instrução e à FPGA (ver [01](01-descricao-topologia.md), [02](02-registradores.md) e [03](03-formato-instrucoes.md)). Cada instrução é executada em 3 a 5 ciclos. Os resultados intermediários ficam em registradores entre um ciclo e o próximo, e por isso a mesma ULA e a mesma memória são reaproveitadas em ciclos diferentes:
 
 - **uma memória única** para instruções e dados, endereçada pelo PC (busca) ou pelo ALUOut (LD/ST), escolhidos pelo mux `IorD`;
 - **uma ULA**, que calcula `PC+1` no FETCH, o alvo do desvio no DECODE e a operação da instrução no estado de execução;
@@ -89,7 +89,7 @@ flowchart LR
 | IR, RDM, A, B, ALUOut | `register_n.vhd` | Registrador genérico. O IR só é escrito com `IRWrite`; os demais são escritos em todo ciclo. |
 | Muxes | `mux_n.vhd` | Mux genérico (largura e nº de entradas configuráveis), usado nos 6 pontos de seleção. |
 
-A ULA e o banco de registradores foram adaptados do Lab05. Na ULA, foram removidos NOR, Overflow e Cout, que nenhuma instrução usa. No banco, saíram os valores iniciais fixos de teste e entrou o R0 fixo em 0.
+A ULA e o banco de registradores foram adaptados do Lab05. Na ULA, foram removidos NOR, Overflow e Cout, que nenhuma instrução usa. No banco, saíram os valores iniciais fixos de teste e entrou o R0 fixo em 0. O código de 3 bits da ULA também veio do Lab05: a unidade de controle gera esse código direto, sem o bloco `alu_control` do livro, porque o nosso formato não tem campo funct.
 
 ## Muxes
 
@@ -137,6 +137,7 @@ O que o datapath faz em cada estado da FSM. Os registradores atualizados recebem
 
 ## Detalhes de implementação
 
+- **Condição de escrita do PC:** o livro só tem BEQ, que escreve o PC quando `zero = 1`. Para cobrir o BNE, a condição virou `zero XOR BNE`, calculada no datapath. Com isso a unidade de controle não recebe o `zero` e continua sendo uma máquina de Moore pura. *(adaptação)*
 - **Temporização da memória:** a memória (altsyncram) registra o endereço na borda de descida, porque está ligada no clock invertido. O endereço montado depois de uma borda de subida é lido no meio do ciclo, e o dado chega ao IR ou ao RDM na borda de subida seguinte. Por isso FETCH e MEM_READ levam um ciclo cada.
 - **Muxes em VHDL-93:** as entradas do `mux_n` chegam concatenadas num único barramento, com a entrada 0 nos bits baixos. O VHDL-93 não aceita array de vetores sem tamanho fixo nem expressões no `port map`, então as concatenações ficam em sinais intermediários.
 - **Reset:** assíncrono em todos os registradores do datapath, com o mesmo critério da FSM.

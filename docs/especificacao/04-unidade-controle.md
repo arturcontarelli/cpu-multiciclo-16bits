@@ -132,7 +132,7 @@ A quantidade de LEDs verdes realmente disponíveis na placa alvo depende do pin 
 - **Acoplamento:** `controller_fsm.vhd` nunca instancia ALU, banco de registradores ou memória — só portas de entrada/saída. A fiação real fica em `src/top/cpu_top.vhd`.
 - **Reset:** assíncrono (decisão de projeto — o reset vem de um botão/switch físico, não sincronizado ao clock manual). O testbench isolado (`sim/testbenches/tb_controller_fsm.vhd`) deve cobrir reset no meio de uma instrução.
 - **Opcodes:** sempre via `use work.cpu_pkg.all` — nunca redefinidos localmente em `src/control/`.
-- **Leitura síncrona da memória (decidido):** a RAM do Quartus (`altsyncram`) tem leitura síncrona. Por isso ela é ligada no **clock invertido** (ver [`decisoes.md`](decisoes.md)), e esta FSM não precisa de estados de espera em `FETCH` e `MEM_READ`. Se essa decisão mudar, a FSM precisa ganhar esses estados.
+- **Leitura síncrona da memória (decidido):** a RAM do Quartus (`altsyncram`) tem leitura síncrona. Por isso ela é ligada no **clock invertido** (ver [`01-descricao-topologia.md`](01-descricao-topologia.md)), e esta FSM não precisa de estados de espera em `FETCH` e `MEM_READ`. Se essa decisão mudar, a FSM precisa ganhar esses estados.
 
 ## Status de implementação
 

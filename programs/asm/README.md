@@ -10,3 +10,11 @@ ADD  R3, R1, R2   ; R3 deve ficar 8
 ```
 
 Cada arquivo aqui deve ter um `.mif` correspondente em `programs/mif/` com o mesmo nome. Não edite o `.mif` diretamente — gere/atualize a partir do `.asm` para não perder a rastreabilidade (DRY: uma única fonte de verdade por programa de teste).
+
+Para gerar o `.mif`, rode a partir da raiz do repositório:
+
+```
+python programs/montador.py programs/asm/<nome>.asm
+```
+
+O montador aceita rótulos (`laco:`) como alvo de BEQ/BNE/JMP e calcula sozinho o imediato relativo a PC+1. A sintaxe completa está no topo de `programs/montador.py`.

@@ -11,5 +11,6 @@ Seções que compõem o documento final de especificação (entregue em PDF), co
 - `07-resultados-discussao.md` — resultados e discussão
 - `08-dificuldades.md` — dificuldades encontradas
 - `09-uso-ia.md` — quais partes foram desenvolvidas com uso de IA e por quê
+- `10-integracao-fpga.md` — integração na DE2-115: topo, debouncer, displays, LEDs, pinagem e como testar na placa (Parte 4)
 
 Cada seção pode ser escrita pela parte responsável (ver tabela em `../estrutura-projeto.md`) e depois consolidada em um único PDF pela Parte 5 (Testes, Documentação e Coordenação).

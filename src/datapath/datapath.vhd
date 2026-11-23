@@ -50,8 +50,8 @@ entity datapath is
         -- saidas para o decodificador, displays e testbenches
         instr       : out word16;   -- conteudo do IR
         pc_out      : out word16;   -- HEX0-3
-        alu_result  : out word16;   -- saida da ULA (HEX4-7, SW17 = 0)
-        rdm_out     : out word16;   -- RDM (HEX4-7, SW17 = 1)
+        alu_result  : out word16;   -- saida da ULA (HEX4-7, SW17 = 1)
+        rdm_out     : out word16;   -- RDM (HEX4-7, SW17 = 0)
         reg_dump    : out std_logic_vector(127 downto 0)
     );
 end entity datapath;

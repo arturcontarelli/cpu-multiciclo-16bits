@@ -28,7 +28,7 @@ A CPU tem quatro blocos, ligados somente na entidade de topo (`src/top/cpu_top.v
 | Unidade de controle | `src/control/` | Máquina de estados de 10 estados. Recebe o opcode e gera os sinais de controle e o estado para os LEDs. | [04](04-unidade-controle.md) |
 | Caminho de dados | `src/datapath/` | PC, banco de registradores, ULA, registradores intermediários e muxes. Executa o que a unidade de controle manda. | [05](05-caminho-dados.md) |
 | Memória e decodificador | `src/memory/`, `src/common/` | Memória única de instruções e dados. O decodificador separa os campos da instrução guardada no IR. | — |
-| Periféricos da placa | `src/io/` | Debouncer do botão de clock e displays de 7 segmentos. | — |
+| Periféricos da placa | `src/io/` | Debouncer do botão de clock e displays de 7 segmentos. | [10](10-integracao-fpga.md) |
 
 Os blocos não se conhecem: cada um só vê as próprias portas. Opcodes e tipos ficam num pacote único (`src/common/cpu_pkg.vhd`), usado por todos.
 

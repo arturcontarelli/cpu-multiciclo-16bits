@@ -27,13 +27,16 @@ end entity cpu_top;
 |---|---|---|
 | `CLOCK_50` | Y2 | Clock de 50 MHz da placa. Usado **só pelo debouncer**, para amostrar o botão. |
 | `KEY[0]` | M23 | **Clock manual da CPU**, depois do debouncer. |
-| `KEY[1]` | M21 | Reset. |
+| `KEY[1]` | M21 | Reset (volta ao FETCH do endereço 0). |
 | `SW[17]` | Y23 | HEX4–7 mostram o RDM (`0`) ou a saída da ULA (`1`). |
 | `LEDG[0..4]` | E21, E22, E25, E24, H21 | `led_state` da FSM: fetch, decode, execute, memory, write-back (ver `docs/especificacao/04-unidade-controle.md`). |
+| `LEDG[8]` | F17 | Clock da CPU: aceso enquanto o `KEY[0]` (ou o `KEY[1]`) está apertado. Serve para ver que o debouncer reagiu. |
 | `HEX0..HEX3` | (ver `.qsf`) | PC em hexadecimal; HEX0 é o dígito menos significativo. |
 | `HEX4..HEX7` | (ver `.qsf`) | RDM ou saída da ULA, conforme o SW17. |
 
-`KEY[2..3]`, `SW[0..16]` e `LEDG[5..8]` estão no `.qsf` para que as portas fiquem completas. Os LEDs que sobram devem receber `'0'`: `LEDG <= "0000" & led_state`.
+`KEY[2..3]`, `SW[0..16]` e `LEDG[5..7]` estão no `.qsf` para que as portas fiquem completas. Os LEDs que sobram recebem `'0'`: `LEDG <= cpu_clk & "000" & led_state` (em `src/top/cpu_top.vhd`).
+
+Desenho da placa com tudo isso: [`mapa_placa.svg`](mapa_placa.svg).
 
 ## Detalhes elétricos
 
@@ -45,10 +48,13 @@ end entity cpu_top;
 
 Decisão do grupo, a mesma do Lab05: **o botão `KEY[0]`, filtrado pelo debouncer, é o próprio `clk` da CPU.** Cada aperto é um ciclo.
 
-- O debouncer roda no `CLOCK_50` e entrega o nível estável do botão invertido (`1` = apertado). Esse sinal vai para o `clk` da FSM, do datapath e da memória.
+- O debouncer (`src/io/debouncer.vhd`) roda no `CLOCK_50` e entrega o nível estável do botão invertido (`1` = apertado). Esse sinal vai para o `clk` da FSM, do datapath e da memória.
 - **Não** use o `CLOCK_50` como clock da CPU com o botão como enable: FSM, datapath e memória não têm entrada de enable.
 - A memória já inverte o clock internamente (`src/memory/memory.vhd`), então o topo não faz nada além de ligar o mesmo `clk` nela. Na placa, a memória lê quando o botão é **solto**, e o IR/RDM capturam no aperto **seguinte**.
-- O reset das partes 1 a 3 é **assíncrono** e ativo em `1`: ligue nele o `KEY[1]` invertido. Com o clock vindo do botão, um reset síncrono só funcionaria apertando o clock junto.
+- O reset das partes 1 a 3 é **assíncrono** e ativo em `1`: nele vai o `KEY[1]` depois de outro debouncer (que já inverte). Com o clock vindo do botão, um reset síncrono só funcionaria apertando o clock junto.
+- **O reset também gera um pulso de clock** (`cpu_clk = clk_db or reset_db`, em `src/io/clock_reset.vhd`). Sem isso, depois de um reset no meio do programa a memória ainda teria registrado o endereço antigo (ela só registra na descida do clock), e o primeiro FETCH buscaria a instrução errada. Soltar o `KEY[1]` desce o clock com o PC já em 0, e a memória registra o endereço 0. O `sim/testbenches/tb_cpu_top.vhd` testa esse caso.
 - O Quartus vai avisar que o clock é gerado por lógica. Nessa velocidade (um ciclo por aperto) isso não causa problema.
+
+O projeto do Quartus é criado por `criar_projeto.tcl` (ver `README.md` desta pasta), que lê os pinos deste `.qsf`.
 
 O `.qsf` oficial completo (com todos os periféricos da placa) e o manual da DE2-115 vêm no CD/site da Terasic. Não copie as linhas de topo do arquivo oficial (`TOP_LEVEL_ENTITY "DE2_115"`, `SDC_FILE DE2_115.SDC`): o topo deste projeto é o `cpu_top`.

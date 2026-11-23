@@ -1,1 +1,24 @@
 CLAUDE.md
+
+# Quartus: arquivos gerados pelo script e pela compilacao
+quartus/cpu_multiciclo.qpf
+quartus/cpu_multiciclo.qsf
+quartus/db/
+quartus/incremental_db/
+quartus/output_files/
+quartus/simulation/
+quartus/greybox_tmp/
+quartus/*.qws
+quartus/*.bak
+quartus/*.rpt
+quartus/*.summary
+quartus/*.smsg
+quartus/*.jdi
+quartus/*.sof
+quartus/*.pof
+
+# ModelSim
+sim/**/work/
+sim/**/transcript
+sim/**/*.wlf
+sim/**/modelsim.ini

@@ -7,4 +7,4 @@ Periféricos da FPGA, isolados do núcleo da CPU (a CPU não deveria depender de
 - `hex_display.vhd` — decodificador binário → 7 segmentos (ativo em 0), reutilizado (DRY) para todos os displays HEX0–HEX7 em vez de duplicar a tabela de segmentos em cada display.
 - `hex_mux.vhd` — multiplexa RDM (`SW17 = 0`) vs. saída da ULA (`SW17 = 1`) nos displays HEX4–HEX7.
 
-Esses módulos só existem para a demonstração na placa; a lógica da CPU em si (`src/control`, `src/datapath`, `src/memory`) não depende de nada aqui. Explicação completa: `docs/especificacao/10-integracao-fpga.md`.
+Esses módulos só existem para a demonstração na placa; a lógica da CPU em si (`src/control`, `src/datapath`, `src/memory`) não depende de nada aqui. Explicação completa: seção "Integração na placa" de `docs/especificacao/01-descricao-topologia.md`.

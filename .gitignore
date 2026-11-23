@@ -22,3 +22,6 @@ sim/**/work/
 sim/**/transcript
 sim/**/*.wlf
 sim/**/modelsim.ini
+
+# Typst: PDF gerado a partir de docs/relatorio.typ
+docs/relatorio.pdf

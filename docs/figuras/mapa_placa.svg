@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860" font-family="Segoe UI, Helvetica, Arial, sans-serif" xmlns:c2pa="http://c2pa.org/manifest">
+<style>
+.t{font-size:13px;fill:#1d2733}.s{font-size:11px;fill:#4a5866}.pin{font-size:10.5px;fill:#6a3d00;font-family:Consolas,monospace}
+.h{font-size:15px;font-weight:600;fill:#1d2733}.w{font-size:12px;fill:#fff;font-weight:600}
+</style>
+<rect width="1200" height="860" fill="#ffffff"/>
+<text x="30" y="34" class="h" font-size="20">Mapa da DE2-115 — CPU multiciclo 16 bits (Parte 4)</text>
+<text x="30" y="56" class="s">Vista de cima, posições aproximadas. Destacado = usado pelo cpu_top; cinza = não usado. Pinos em quartus/pinos_de2_115.qsf.</text>
+<rect x="30" y="75" width="1140" height="560" rx="14" fill="#1f4f3a" stroke="#123526" stroke-width="3"/>
+<rect x="60" y="95" width="120" height="50" rx="4" fill="#cfd6dc" stroke="#8a96a0"/><text x="120" y="117" text-anchor="middle" class="t">USB Blaster</text><text x="120" y="133" text-anchor="middle" class="s">cabo p/ gravar</text>
+<rect x="200" y="100" width="90" height="40" rx="4" fill="#f3c94a" stroke="#a5821a"/><text x="245" y="117" text-anchor="middle" class="t">RUN / PROG</text><text x="245" y="132" text-anchor="middle" class="s">deixe em RUN</text>
+<rect x="60" y="160" width="120" height="36" rx="4" fill="#cfd6dc" stroke="#8a96a0"/><text x="120" y="183" text-anchor="middle" class="t">Liga/desliga</text>
+<rect x="520" y="105" width="150" height="120" rx="6" fill="#2b2f33" stroke="#000"/><text x="595" y="155" text-anchor="middle" class="w">Cyclone IV E</text><text x="595" y="173" text-anchor="middle" class="w">EP4CE115F29C7</text>
+<rect x="760" y="110" width="110" height="50" rx="4" fill="#cfd6dc" stroke="#8a96a0"/><text x="815" y="132" text-anchor="middle" class="t">CLOCK_50</text><text x="815" y="148" text-anchor="middle" class="pin">PIN_Y2 · 50 MHz</text>
+<text x="815" y="178" text-anchor="middle" class="s" fill="#d6e8dd" style="fill:#d6e8dd">usado só pelos debouncers</text>
+<rect x="300" y="160" width="190" height="60" rx="4" fill="#3d6b55" stroke="#2d5442"/><text x="395" y="195" text-anchor="middle" class="s" style="fill:#b8d1c4">LCD (não usado)</text>
+<rect x="70" y="255" width="48" height="74" rx="4" fill="#120303" stroke="#000"/>
+<text x="94" y="313" text-anchor="middle" font-family="Consolas,monospace" font-size="52" fill="#ff3b2f">0</text>
+<text x="94" y="347" text-anchor="middle" class="w" style="font-size:11px">HEX7</text>
+<rect x="128" y="255" width="48" height="74" rx="4" fill="#120303" stroke="#000"/>
+<text x="152" y="313" text-anchor="middle" font-family="Consolas,monospace" font-size="52" fill="#ff3b2f">0</text>
+<text x="152" y="347" text-anchor="middle" class="w" style="font-size:11px">HEX6</text>
+<rect x="186" y="255" width="48" height="74" rx="4" fill="#120303" stroke="#000"/>
+<text x="210" y="313" text-anchor="middle" font-family="Consolas,monospace" font-size="52" fill="#ff3b2f">0</text>
+<text x="210" y="347" text-anchor="middle" class="w" style="font-size:11px">HEX5</text>
+<rect x="244" y="255" width="48" height="74" rx="4" fill="#120303" stroke="#000"/>
+<text x="268" y="313" text-anchor="middle" font-family="Consolas,monospace" font-size="52" fill="#ff3b2f">7</text>
+<text x="268" y="347" text-anchor="middle" class="w" style="font-size:11px">HEX4</text>
+<rect x="324" y="255" width="48" height="74" rx="4" fill="#120303" stroke="#000"/>
+<text x="348" y="313" text-anchor="middle" font-family="Consolas,monospace" font-size="52" fill="#ff3b2f">0</text>
+<text x="348" y="347" text-anchor="middle" class="w" style="font-size:11px">HEX3</text>
+<rect x="382" y="255" width="48" height="74" rx="4" fill="#120303" stroke="#000"/>
+<text x="406" y="313" text-anchor="middle" font-family="Consolas,monospace" font-size="52" fill="#ff3b2f">0</text>
+<text x="406" y="347" text-anchor="middle" class="w" style="font-size:11px">HEX2</text>
+<rect x="440" y="255" width="48" height="74" rx="4" fill="#120303" stroke="#000"/>
+<text x="464" y="313" text-anchor="middle" font-family="Consolas,monospace" font-size="52" fill="#ff3b2f">0</text>
+<text x="464" y="347" text-anchor="middle" class="w" style="font-size:11px">HEX1</text>
+<rect x="498" y="255" width="48" height="74" rx="4" fill="#120303" stroke="#000"/>
+<text x="522" y="313" text-anchor="middle" font-family="Consolas,monospace" font-size="52" fill="#ff3b2f">1</text>
+<text x="522" y="347" text-anchor="middle" class="w" style="font-size:11px">HEX0</text>
+<rect x="64" y="229" width="234" height="20" rx="4" fill="#ffd9a8"/><text x="181" y="243" text-anchor="middle" class="t" style="font-size:12px">SW17=0: RDM · SW17=1: saída da ULA</text>
+<rect x="318" y="229" width="234" height="20" rx="4" fill="#ffd9a8"/><text x="435" y="243" text-anchor="middle" class="t" style="font-size:12px">PC (HEX0 = dígito menos signif.)</text>
+<circle cx="580" cy="292" r="9" fill="#2f6b3c" stroke="#0b5d1c" stroke-width="2"/>
+<text x="580" y="347" text-anchor="middle" class="w" style="font-size:11px">LEDG8</text>
+<text x="598" y="285" class="w" style="font-size:11px;font-weight:400">clock da CPU</text><text x="598" y="300" class="w" style="font-size:11px;font-weight:400">(aceso com botão</text><text x="598" y="314" class="w" style="font-size:11px;font-weight:400">apertado)</text>
+<rect x="70" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="106" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="142" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="178" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="214" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="250" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="286" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="322" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="358" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="394" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="430" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="466" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="502" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="538" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="574" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="610" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="646" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<rect x="682" y="395" width="12" height="18" rx="2" fill="#5a2a2a" stroke="#341616"/>
+<text x="376" y="431" text-anchor="middle" class="s" style="fill:#b8d1c4">LEDR17 … LEDR0 (não usados)</text>
+<rect x="780" y="395" width="14" height="20" rx="2" fill="#24452f" stroke="#0b3d18"/>
+<text x="787" y="389" text-anchor="middle" class="w" style="font-size:10px">G7</text>
+<rect x="825" y="395" width="14" height="20" rx="2" fill="#24452f" stroke="#0b3d18"/>
+<text x="832" y="389" text-anchor="middle" class="w" style="font-size:10px">G6</text>
+<rect x="870" y="395" width="14" height="20" rx="2" fill="#24452f" stroke="#0b3d18"/>
+<text x="877" y="389" text-anchor="middle" class="w" style="font-size:10px">G5</text>
+<rect x="915" y="395" width="14" height="20" rx="2" fill="#2f8a43" stroke="#0b3d18"/>
+<text x="922" y="389" text-anchor="middle" class="w" style="font-size:10px">G4</text>
+<rect x="960" y="395" width="14" height="20" rx="2" fill="#2f8a43" stroke="#0b3d18"/>
+<text x="967" y="389" text-anchor="middle" class="w" style="font-size:10px">G3</text>
+<rect x="1005" y="395" width="14" height="20" rx="2" fill="#2f8a43" stroke="#0b3d18"/>
+<text x="1012" y="389" text-anchor="middle" class="w" style="font-size:10px">G2</text>
+<rect x="1050" y="395" width="14" height="20" rx="2" fill="#46ff6a" stroke="#0b3d18"/>
+<text x="1057" y="389" text-anchor="middle" class="w" style="font-size:10px">G1</text>
+<rect x="1095" y="395" width="14" height="20" rx="2" fill="#2f8a43" stroke="#0b3d18"/>
+<text x="1102" y="389" text-anchor="middle" class="w" style="font-size:10px">G0</text>
+<rect x="780" y="500" width="64" height="64" rx="8" fill="#6b7780" stroke="#2c3338" stroke-width="2"/>
+<circle cx="812" cy="532" r="20" fill="#4f5a62"/>
+<text x="812" y="582" text-anchor="middle" class="w">KEY3</text>
+<rect x="870" y="500" width="64" height="64" rx="8" fill="#6b7780" stroke="#2c3338" stroke-width="2"/>
+<circle cx="902" cy="532" r="20" fill="#4f5a62"/>
+<text x="902" y="582" text-anchor="middle" class="w">KEY2</text>
+<rect x="960" y="500" width="64" height="64" rx="8" fill="#e8edf1" stroke="#2c3338" stroke-width="2"/>
+<circle cx="992" cy="532" r="20" fill="#2563c9"/>
+<text x="992" y="582" text-anchor="middle" class="w">KEY1</text>
+<rect x="1050" y="500" width="64" height="64" rx="8" fill="#e8edf1" stroke="#2c3338" stroke-width="2"/>
+<circle cx="1082" cy="532" r="20" fill="#2563c9"/>
+<text x="1082" y="582" text-anchor="middle" class="w">KEY0</text>
+<text x="1082" y="537" text-anchor="middle" class="w">CLK</text>
+<text x="992" y="537" text-anchor="middle" class="w">RST</text>
+<rect x="70" y="500" width="20" height="44" rx="3" fill="#f5f7f9" stroke="#20272c"/>
+<rect x="73" y="504" width="14" height="16" rx="2" fill="#d94b16"/>
+<text x="80" y="562" text-anchor="middle" class="w" style="font-size:10px">SW17</text>
+<rect x="106" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="109" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<text x="116" y="562" text-anchor="middle" class="w" style="font-size:10px">SW16</text>
+<rect x="142" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="145" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="178" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="181" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="214" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="217" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="250" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="253" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="286" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="289" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="322" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="325" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="358" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="361" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="394" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="397" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="430" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="433" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="466" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="469" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="502" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="505" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="538" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="541" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="574" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="577" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="610" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="613" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="646" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="649" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<rect x="682" y="500" width="20" height="44" rx="3" fill="#59646c" stroke="#20272c"/>
+<rect x="685" y="524" width="14" height="16" rx="2" fill="#3a434a"/>
+<text x="692" y="562" text-anchor="middle" class="w" style="font-size:10px">SW0</text>
+<text x="394" y="562" text-anchor="middle" class="s" style="fill:#b8d1c4">SW16 … SW1 (não usadas)</text>
+<text x="80" y="490" class="w" style="font-size:11px">cima = 1 (ULA)</text>
+<text x="30" y="655" class="h">Como usar</text>
+<text x="30" y="679" class="t" font-weight="600">KEY0 (M23)</text><text x="280" y="679" class="t">clock manual: cada aperto = 1 ciclo (com debouncer de 20 ms)</text>
+<text x="30" y="703" class="t" font-weight="600">KEY1 (M21)</text><text x="280" y="703" class="t">reset: PC = 0, registradores = 0, FSM volta ao FETCH</text>
+<text x="30" y="727" class="t" font-weight="600">SW17 (Y23)</text><text x="280" y="727" class="t">HEX7–4: baixo (0) = RDM · cima (1) = saída da ULA</text>
+<text x="30" y="751" class="t" font-weight="600">HEX3–0</text><text x="280" y="751" class="t">PC em hexadecimal</text>
+<text x="30" y="775" class="t" font-weight="600">LEDG4–0 (H21 E24 E25 E22 E21)</text><text x="280" y="775" class="t">estado: G0 fetch · G1 decode · G2 execute · G3 memory · G4 write-back</text>
+<text x="30" y="799" class="t" font-weight="600">LEDG8 (F17)</text><text x="280" y="799" class="t">acende enquanto o botão de clock (ou reset) está apertado</text>
+<text x="1102" y="431" text-anchor="end" transform="rotate(-50 1102 431)" class="w" style="font-size:9.5px;font-weight:400">FETCH</text>
+<text x="1057" y="431" text-anchor="end" transform="rotate(-50 1057 431)" class="w" style="font-size:9.5px;font-weight:400">DECODE</text>
+<text x="1012" y="431" text-anchor="end" transform="rotate(-50 1012 431)" class="w" style="font-size:9.5px;font-weight:400">EXECUTE</text>
+<text x="967" y="431" text-anchor="end" transform="rotate(-50 967 431)" class="w" style="font-size:9.5px;font-weight:400">MEMORY</text>
+<text x="922" y="431" text-anchor="end" transform="rotate(-50 922 431)" class="w" style="font-size:9.5px;font-weight:400">WRITE-BACK</text>
+<text x="30" y="831" class="s">Exemplo desenhado: 1º aperto do KEY0 após o reset → DECODE de ADDI R1, R0, 6 (PC = 0001, LEDG1 aceso, SW17 = 1 → ULA = PC + 6 = 0007; com SW17 = 0 o HEX7–4 mostraria o RDM = 5206, a própria instrução).</text>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpmY2MyMzMwNi04N2E4LTRmOTItYTkwMC1iODJjMjg4ZjRmMWIAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaLBr9enpNfZh5YrTahr7nBUAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDoxYzBkMDllYi00NzlkLTQyMmItYmRiNi00NGNhOWI1NGY2MjBscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoVCoNM1cPyhgc2Lg3TIlbTAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggwOUGug56eB8DeTGWyojoaJhfvqc5M//cjIAhaG4k4qukZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaG4vekjHwuSEXs3vYr/csjsAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIGQHlp/9ZFJtOrxY9ZMCKiOvQXAOhcxuoISZSH7XHW1YZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GTkDZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmZjYzIzMzA2LTg3YTgtNGY5Mi1hOTAwLWI4MmMyODhmNGYxYi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjgxNGU2OTNmLWM5ZWYtNDI1Ny1iYTVlLWZhMTdkNjcyYzFlNnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDA5Qa6Dnp4HwN5MZbKiOhomF++pzkz/9yMgCFobiTiq6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggU5z4NkHl/hLigMq34Cup6W/ikZHLS1W4sPgSXug0hvmiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggNq8XUhTK7H47IPiVe05OQeoevBHvQvheJ8MoDUheYAx0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQEDSRjgxyd0U+gKDTKxHuHYhm+voIIUdtBhf+sj1DPjhF0UypO/bY3PFhpo31WV5iNIT+wQIMN0SO9ccHxnk93w=</c2pa:manifest></metadata></svg>

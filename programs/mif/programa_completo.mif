@@ -1,0 +1,28 @@
+-- Gerado por programs/montador.py a partir de programs/asm/programa_completo.asm. Nao edite a mao.
+WIDTH=16;
+DEPTH=4096;
+ADDRESS_RADIX=DEC;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN
+    0    : 5206;  -- ADDI R1, R0, 6
+    1    : 543D;  -- ADDI R2, R0, -3
+    2    : 0650;  -- ADD  R3, R1, R2
+    3    : 1850;  -- SUB  R4, R1, R2
+    4    : 2A58;  -- AND  R5, R1, R3
+    5    : 3C60;  -- OR   R6, R1, R4
+    6    : 4E88;  -- SLT  R7, R2, R1
+    7    : 79DD;  -- ST   R4, R7, 29
+    8    : 6E1E;  -- LD   R7, R0, 30
+    9    : 8F01;  -- BEQ  R7, R4, depois
+    10   : 521F;  -- ADDI R1, R0, 31
+    11   : 9F01;  -- BNE  R7, R4, laco
+    12   : 5B41;  -- ADDI R5, R5, 1
+    13   : 5481;  -- ADDI R2, R2, 1
+    14   : 943E;  -- BNE  R2, R0, laco
+    15   : A011;  -- JMP  pula
+    16   : 521E;  -- ADDI R1, R0, 30
+    17   : 5009;  -- ADDI R0, R0, 9
+    18   : 803F;  -- BEQ  R0, R0, fim
+    [19..4095] : 0000;
+END;
